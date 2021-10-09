@@ -15,16 +15,41 @@ import (
 func main() {
 
 	app := &cli.App{
-		Name:  "organize",
-		Usage: "categorize hn titles as political/policy or not",
-		Action: func(c *cli.Context) error {
-			fmt.Println("Enter 1 to flag post. Do so if the post is related to politics, policy, regulations or legal:")
-			err := process()
-			if err != nil {
-				return err
-			}
+		Commands: []*cli.Command{
+			{
+				Name:    "load",
+				Aliases: []string{"l"},
+				Usage:   "Load hn posts",
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:    "timestamp",
+						Aliases: []string{"t"},
+						Usage:   "Load posts since Unix timestamp int",
+					},
+				},
+				Action: func(c *cli.Context) error {
+					err := LoadTopPosts()
+					if err != nil {
+						return err
+					}
 
-			return nil
+					return nil
+				},
+			},
+			{
+				Name:    "flag",
+				Aliases: []string{"c"},
+				Usage:   "flag hn titles as political/policy/legal",
+				Action: func(c *cli.Context) error {
+					fmt.Println("Enter 1 to flag post. Do so if the post is related to politics, policy, regulations or legal:")
+					err := process()
+					if err != nil {
+						return err
+					}
+
+					return nil
+				},
+			},
 		},
 	}
 

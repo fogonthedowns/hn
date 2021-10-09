@@ -31,7 +31,7 @@ type TopPosts struct {
 	} `json:"hits"`
 }
 
-func main() {
+func LoadTopPosts() error {
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Println(err)
@@ -45,7 +45,7 @@ func main() {
 	fmt.Println("The status code is", getRequest.StatusCode, http.StatusText(getRequest.StatusCode))
 
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 
 	//close - this will be done at the end of the function
@@ -56,7 +56,7 @@ func main() {
 	rawData, err := ioutil.ReadAll(getRequest.Body)
 
 	if err != nil {
-		fmt.Println(err)
+		return err
 	}
 
 	top := TopPosts{}
@@ -67,12 +67,12 @@ func main() {
 
 	flag, err := ioutil.ReadDir(fmt.Sprintf("%v/dataset/hn/flag", dir))
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	neg, err := ioutil.ReadDir(fmt.Sprintf("%v/dataset/hn/neg", dir))
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	seen := make(map[string]bool)
@@ -99,4 +99,5 @@ func main() {
 			panic(err)
 		}
 	}
+	return nil
 }
