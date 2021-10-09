@@ -1,11 +1,9 @@
 package main
 
 import (
-	//	"fmt"
-
 	"bufio"
-	"encoding/csv"
 	"fmt"
+	"io/ioutil"
 	"log"
 	"os"
 	"strconv"
@@ -17,15 +15,15 @@ import (
 func main() {
 
 	app := &cli.App{
-		Name:  "greet",
-		Usage: "fight the loneliness!",
+		Name:  "organize",
+		Usage: "categorize hn titles as political/policy or not",
 		Action: func(c *cli.Context) error {
-			err := processCSV()
+			err := process()
 			if err != nil {
 				return err
 			}
 
-			fmt.Println("Hello friend!")
+			fmt.Println("Enter 1 if post is related to politics, policy, regulations or legal:")
 			return nil
 		},
 	}
@@ -42,38 +40,46 @@ type Row struct {
 	Class    int
 }
 
-func processCSV() error {
-	file, err := os.Open("/home/jzollars/hack/data-sets/hn/file.tsv")
+func process() error {
+	files, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/unlabeled")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 
-	defer file.Close()
-	reader := csv.NewReader(file)
-	reader.Comma = '\t' // tsv
-	reader.FieldsPerRecord = -1
-	data, err := reader.ReadAll()
+	for _, file := range files {
+		fmt.Println(file.Name(), file.IsDir())
+		if file.IsDir() {
+			break
+		} else {
+			content, err := ioutil.ReadFile(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v", file.Name()))
+			fmt.Println(string(content))
+			reader := bufio.NewReader(os.Stdin)
+			text, _ := reader.ReadString('\n')
 
-	if err != nil {
-		return err
-	}
+			text = strings.Replace(text, "\n", "", -1)
+			class, err := strconv.Atoi(text)
 
-	var rows []Row
+			if err != nil {
+				return err
+			}
 
-	for _, v := range data {
-		row := Row{Title: v[0], ObjectID: v[1]}
-		fmt.Println(v[0])
-		reader := bufio.NewReader(os.Stdin)
-		text, _ := reader.ReadString('\n')
-
-		text = strings.Replace(text, "\n", "", -1)
-		row.Class, err = strconv.Atoi(text)
-		if err != nil {
-			return err
+			from := fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v", file.Name())
+			switch class {
+			case 0:
+				fmt.Println(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
+				err = os.Rename(from, fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
+				if err != nil {
+					return err
+				}
+			case 1:
+				fmt.Println(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
+				err = os.Rename(from, fmt.Sprintf("/home/jzollars/hack/data-sets/hn/pos/%v", file.Name()))
+				if err != nil {
+					return err
+				}
+			}
 		}
-		rows = append(rows, row)
 	}
-	fmt.Println(rows)
 
 	return nil
 

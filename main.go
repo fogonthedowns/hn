@@ -1,13 +1,13 @@
 package main
 
 import (
-	"bufio"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type Hits struct {
@@ -63,28 +63,40 @@ func main() {
 		log.Fatal(jsonErr)
 	}
 
-	file, err := os.Create("/home/jzollars/hack/data-sets/hn/index/file.tsv")
+	pos, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/pos")
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
-	defer file.Close()
 
-	writer := bufio.NewWriter(file)
-	writer.WriteString("Title	ObjectID	Class\n")
+	neg, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/neg")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	seen := make(map[string]bool)
+	for _, file := range pos {
+		fmt.Println(file.Name(), file.IsDir())
+		if !file.IsDir() {
+			seen[strings.TrimRight(file.Name(), ".txt")] = true
+		}
+	}
+
+	for _, file := range neg {
+		fmt.Println(file.Name(), file.IsDir())
+		if !file.IsDir() {
+			seen[strings.TrimRight(file.Name(), ".txt")] = true
+		}
+	}
+	fmt.Println(seen)
 	for _, v := range top.Hits {
 		d := []byte(v.Title)
+		if seen[v.ObjectID] == true {
+			continue
+		}
 		path := fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v.txt", v.ObjectID)
 		err := os.WriteFile(path, d, 0644)
 		if err != nil {
 			panic(err)
 		}
-		row := fmt.Sprintf("%v	%v	0\n", v.Title, v.ObjectID)
-		writer.WriteString(row)
-		if err != nil {
-			panic(err)
-		}
-
 	}
-	writer.Flush()
-	file.Close()
 }
