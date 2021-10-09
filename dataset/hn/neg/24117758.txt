@@ -1,0 +1,1 @@
+Golang Desktop App with Webview/Lorca, WASM and Bazel

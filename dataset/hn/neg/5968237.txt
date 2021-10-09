@@ -1,0 +1,1 @@
+"Disable Javascript" option removed in Firefox 23

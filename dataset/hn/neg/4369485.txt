@@ -1,0 +1,1 @@
+Show HN: A fix for the .bash_profile .bashrc .profile madness

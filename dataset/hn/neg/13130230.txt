@@ -1,0 +1,1 @@
+Rust-lang: Add npm to friends page

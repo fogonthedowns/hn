@@ -1,0 +1,1 @@
+Masochism in Rust Lang

@@ -1,0 +1,1 @@
+Case Study: Npm uses Rust for its CPU-bound bottlenecks [pdf]

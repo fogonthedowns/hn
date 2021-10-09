@@ -1,0 +1,1 @@
+Rust crate stdlib inclusion via left-pad index

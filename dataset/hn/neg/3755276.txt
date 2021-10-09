@@ -1,0 +1,1 @@
+Keeping bash history in sync between multiple terminals

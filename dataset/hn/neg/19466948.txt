@@ -1,0 +1,1 @@
+HighwayHash: Fast hashing at over 10 GB/s per core in Golang

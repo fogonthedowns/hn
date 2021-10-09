@@ -1,0 +1,1 @@
+Show HN: MineSweeper implemented in 100% CSS and HTML – no JavaScript

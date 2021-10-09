@@ -1,0 +1,1 @@
+Chosen: A javascript plug-in that makes long select boxes user-friendly.

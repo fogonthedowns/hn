@@ -1,0 +1,1 @@
+I got tired of PHP and Perl, so I tried bash

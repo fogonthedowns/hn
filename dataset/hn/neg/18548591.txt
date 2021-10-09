@@ -1,0 +1,1 @@
+Aminal: Golang terminal emulator from scratch

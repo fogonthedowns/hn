@@ -1,0 +1,1 @@
+FZF and RipGrep – Navigate with bash faster than ever before

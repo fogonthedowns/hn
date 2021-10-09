@@ -1,0 +1,1 @@
+A cool way to use natural language in JavaScript

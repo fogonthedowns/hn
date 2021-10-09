@@ -1,0 +1,1 @@
+Easy inclusion of math formulas and graphics in WordPress

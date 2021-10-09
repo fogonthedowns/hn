@@ -1,0 +1,1 @@
+rust-lang #38899: borrowed referent of a &T sometimes incorrectly allowed

@@ -1,0 +1,1 @@
+Yukihiro Matsumoto: “Ruby is designed for humans, not machines”

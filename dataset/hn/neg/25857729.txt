@@ -1,0 +1,1 @@
+Golang's network stack attempts to parse HTTP headers as UTF-8

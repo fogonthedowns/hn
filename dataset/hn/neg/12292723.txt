@@ -1,0 +1,1 @@
+Extracting data from Wikipedia using curl, grep, cut and other bash commands

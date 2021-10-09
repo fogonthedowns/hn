@@ -1,0 +1,1 @@
+Simula One: an office-focused, standalone VR headset built on top of Linux

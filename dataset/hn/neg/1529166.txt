@@ -1,0 +1,1 @@
+Shell scripts to improve your writing, or "My advisor rewrote himself in bash."

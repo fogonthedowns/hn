@@ -1,0 +1,1 @@
+Duktape: an embeddable JavaScript engine

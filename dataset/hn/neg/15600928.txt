@@ -1,0 +1,1 @@
+Closh – Bash-like shell based on Clojure

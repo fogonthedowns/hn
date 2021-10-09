@@ -1,0 +1,1 @@
+Rust's language ergonomics initiative

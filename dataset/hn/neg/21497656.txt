@@ -1,0 +1,1 @@
+Bash-lib: Library for bash utility methods and tools

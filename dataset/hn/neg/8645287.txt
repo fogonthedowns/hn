@@ -1,0 +1,1 @@
+Reduction in Garbage Collection Pause Time in Ruby 2.2

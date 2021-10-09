@@ -1,0 +1,1 @@
+Takeover.sh – Wipe and reinstall a running Linux system via SSH without reboot

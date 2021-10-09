@@ -1,0 +1,1 @@
+Quick notes about the bash bug, its impact, and the fixes so far

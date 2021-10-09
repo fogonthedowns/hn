@@ -1,0 +1,1 @@
+Launch of the 3rd Edition of the Ruby on Rails Tutorial Book

@@ -1,0 +1,1 @@
+Golang concepts from an OOP point of view

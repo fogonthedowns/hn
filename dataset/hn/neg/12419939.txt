@@ -1,0 +1,1 @@
+Golang – encoding/csv: Reading is slow

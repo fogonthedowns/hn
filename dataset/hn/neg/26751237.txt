@@ -1,0 +1,1 @@
+Did you know you can just fork() the rustlang compiler from your proc_macro?

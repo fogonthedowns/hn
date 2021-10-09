@@ -1,0 +1,1 @@
+Calls between JavaScript and WebAssembly are finally fast

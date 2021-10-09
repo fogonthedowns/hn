@@ -1,0 +1,1 @@
+How to do things safely in Bash (2018)

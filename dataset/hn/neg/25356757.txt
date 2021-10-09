@@ -1,0 +1,1 @@
+Detecting the use of “curl – bash” server side (2016)

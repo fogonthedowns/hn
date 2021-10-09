@@ -1,0 +1,1 @@
+Requesting C like SIMD intrinsics for Rust lang

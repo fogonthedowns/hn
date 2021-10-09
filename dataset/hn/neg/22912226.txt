@@ -1,0 +1,1 @@
+When did I run that command? Update your Bash prompt with the command start time

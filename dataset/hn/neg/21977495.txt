@@ -1,0 +1,1 @@
+Resolving the Pin Unsoundness – Rust Lang Team Meeting

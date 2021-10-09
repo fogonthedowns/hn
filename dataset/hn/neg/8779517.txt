@@ -1,0 +1,1 @@
+“I am not authorizing you to release a Ruby port of Metaphone 3”

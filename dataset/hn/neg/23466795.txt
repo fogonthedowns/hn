@@ -1,0 +1,1 @@
+New inline assembly syntax available in Rust nightly

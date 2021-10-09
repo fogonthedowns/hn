@@ -1,0 +1,1 @@
+1.5 is the midpoint between 0 and infinity in Ruby

@@ -1,0 +1,1 @@
+Asteroids JavaScript Bookmarklet to blow up any web site

@@ -1,0 +1,1 @@
+Content-aware image resizing in JavaScript

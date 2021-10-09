@@ -1,0 +1,1 @@
+Summary of Golang Generics Discussion

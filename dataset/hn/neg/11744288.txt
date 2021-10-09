@@ -1,0 +1,1 @@
+godoc.orggithub.com redirects to www.rust-lang.org

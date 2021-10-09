@@ -1,0 +1,1 @@
+Zed Shaw: The wonderful Rob Sobers did a great job translating LPTHW to Ruby

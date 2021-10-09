@@ -1,0 +1,1 @@
+Bocker – Docker implemented in around 100 lines of Bash (2015)

@@ -1,0 +1,1 @@
+Submit k3s for inclusion to CNCF as a sandbox project

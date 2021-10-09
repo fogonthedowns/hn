@@ -1,0 +1,1 @@
+Svelte – A UI framework that compiles into tiny standalone JavaScript modules

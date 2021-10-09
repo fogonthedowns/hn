@@ -1,0 +1,1 @@
+D Language accepted for inclusion in GCC

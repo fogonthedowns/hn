@@ -1,0 +1,1 @@
+A little bit of plain JavaScript can do a lot

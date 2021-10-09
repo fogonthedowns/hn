@@ -1,0 +1,1 @@
+Bash Infinity: Standard library and boilerplate framework for Bash

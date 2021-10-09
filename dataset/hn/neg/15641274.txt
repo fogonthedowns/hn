@@ -1,0 +1,1 @@
+Sick of Ruby, dynamic typing, side effects, and object-orientation (2014)

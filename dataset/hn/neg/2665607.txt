@@ -1,0 +1,1 @@
+JavaScript mp3 decoder allows Firefox to play mp3 without flash

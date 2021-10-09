@@ -1,0 +1,1 @@
+Next.js – A small framework for server-rendered universal JavaScript apps

@@ -1,0 +1,1 @@
+Golang.org will be merged into go.dev

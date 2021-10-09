@@ -1,0 +1,1 @@
+DHH: The HEY stack Vanilla Ruby on Rails, MySQL, redis, stimulus, elastic search

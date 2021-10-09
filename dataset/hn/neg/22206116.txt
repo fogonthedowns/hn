@@ -1,0 +1,1 @@
+OpenSnitch is a GNU/Linux port of the Little Snitch application firewall

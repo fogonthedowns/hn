@@ -1,0 +1,1 @@
+PowerShell is open sourced and is available on Linux

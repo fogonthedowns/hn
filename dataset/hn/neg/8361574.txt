@@ -1,0 +1,1 @@
+CVE-2014-6271: Remote code execution through bash

@@ -1,0 +1,1 @@
+AvastSvc.exe contains a full, unsandboxed JavaScript/DOM implementation

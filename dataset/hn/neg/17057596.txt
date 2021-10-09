@@ -1,0 +1,1 @@
+Safe ways to do things in bash

@@ -1,0 +1,1 @@
+Golang: sub-millisecond GC pause on production 18gb heap
