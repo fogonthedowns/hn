@@ -17,18 +17,11 @@ func main() {
 	app := &cli.App{
 		Commands: []*cli.Command{
 			{
-				Name:    "load",
-				Aliases: []string{"l"},
-				Usage:   "Load hn posts",
-				Flags: []cli.Flag{
-					&cli.StringFlag{
-						Name:    "timestamp",
-						Aliases: []string{"t"},
-						Usage:   "Load posts since Unix timestamp int",
-					},
-				},
+				Name:    "top",
+				Aliases: []string{"t"},
+				Usage:   "Load top HN Posts",
 				Action: func(c *cli.Context) error {
-					err := LoadTopPosts()
+					err := LoadPosts("0", "0")
 					if err != nil {
 						return err
 					}
@@ -36,6 +29,34 @@ func main() {
 					return nil
 				},
 			},
+			{
+				Name:    "timestamp",
+				Aliases: []string{"d"},
+				Usage:   "Load hn posts by unix start and stop ts",
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:     "start",
+						Aliases:  []string{"s"},
+						Usage:    "Start Unix timestamp int",
+						Required: true,
+					},
+					&cli.StringFlag{
+						Name:     "end",
+						Aliases:  []string{"e"},
+						Usage:    "End Unix timestamp int",
+						Required: true,
+					},
+				},
+				Action: func(c *cli.Context) error {
+					err := LoadPosts(c.String("start"), c.String("end"))
+					if err != nil {
+						return err
+					}
+
+					return nil
+				},
+			},
+
 			{
 				Name:    "flag",
 				Aliases: []string{"c"},
