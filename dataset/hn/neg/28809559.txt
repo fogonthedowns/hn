@@ -1,0 +1,1 @@
+EU court rules no EULA can forbid decompilation, if you want to fix a bug

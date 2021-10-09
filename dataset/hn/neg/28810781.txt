@@ -1,0 +1,1 @@
+Reddit uses “reddit.com” itself as the endpoint for logging usage data
