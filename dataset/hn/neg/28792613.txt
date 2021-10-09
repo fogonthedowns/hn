@@ -1,0 +1,1 @@
+Autonomous drone navigates independently through the forest at 40 km/h

@@ -32,16 +32,19 @@ type TopPosts struct {
 }
 
 func main() {
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Println(err)
+	}
 
 	url := "https://hn.algolia.com/api/v1/search?tags=front_page"
 
-	fmt.Println("Now retrieving Underground line status, please wait...")
+	fmt.Println("Now retrieving latest HN posts, please wait...")
 	// two variables (response and error) which stores the response from e GET request
 	getRequest, err := http.Get(url)
 	fmt.Println("The status code is", getRequest.StatusCode, http.StatusText(getRequest.StatusCode))
 
 	if err != nil {
-		fmt.Println("Error!")
 		fmt.Println(err)
 	}
 
@@ -53,7 +56,6 @@ func main() {
 	rawData, err := ioutil.ReadAll(getRequest.Body)
 
 	if err != nil {
-		fmt.Println("Error!")
 		fmt.Println(err)
 	}
 
@@ -63,37 +65,35 @@ func main() {
 		log.Fatal(jsonErr)
 	}
 
-	pos, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/pos")
+	flag, err := ioutil.ReadDir(fmt.Sprintf("%v/dataset/hn/flag", dir))
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	neg, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/neg")
+	neg, err := ioutil.ReadDir(fmt.Sprintf("%v/dataset/hn/neg", dir))
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	seen := make(map[string]bool)
-	for _, file := range pos {
-		fmt.Println(file.Name(), file.IsDir())
+	for _, file := range flag {
 		if !file.IsDir() {
 			seen[strings.TrimRight(file.Name(), ".txt")] = true
 		}
 	}
 
 	for _, file := range neg {
-		fmt.Println(file.Name(), file.IsDir())
 		if !file.IsDir() {
 			seen[strings.TrimRight(file.Name(), ".txt")] = true
 		}
 	}
-	fmt.Println(seen)
+
 	for _, v := range top.Hits {
 		d := []byte(v.Title)
 		if seen[v.ObjectID] == true {
 			continue
 		}
-		path := fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v.txt", v.ObjectID)
+		path := fmt.Sprintf("%v/dataset/hn/unlabeled/%v.txt", dir, v.ObjectID)
 		err := os.WriteFile(path, d, 0644)
 		if err != nil {
 			panic(err)

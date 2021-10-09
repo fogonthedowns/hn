@@ -1,0 +1,4 @@
+The source of this data set is hackernews. This data set will be used to improve hacker news.
+
+neg -  no match for flagged topics
+flag - posts which include the following topics: poltics, regulations, governments, law, social policy, sociology 

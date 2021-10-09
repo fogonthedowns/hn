@@ -1,0 +1,1 @@
+Firefox: Dark pattern consent dialog invites users to share their location

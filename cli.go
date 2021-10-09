@@ -18,12 +18,12 @@ func main() {
 		Name:  "organize",
 		Usage: "categorize hn titles as political/policy or not",
 		Action: func(c *cli.Context) error {
+			fmt.Println("Enter 1 to flag post. Do so if the post is related to politics, policy, regulations or legal:")
 			err := process()
 			if err != nil {
 				return err
 			}
 
-			fmt.Println("Enter 1 if post is related to politics, policy, regulations or legal:")
 			return nil
 		},
 	}
@@ -41,7 +41,12 @@ type Row struct {
 }
 
 func process() error {
-	files, err := ioutil.ReadDir("/home/jzollars/hack/data-sets/hn/unlabeled")
+	dir, err := os.Getwd()
+	if err != nil {
+		return err
+	}
+
+	files, err := ioutil.ReadDir(fmt.Sprintf("%v/dataset/hn/unlabeled", dir))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -51,7 +56,7 @@ func process() error {
 		if file.IsDir() {
 			break
 		} else {
-			content, err := ioutil.ReadFile(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v", file.Name()))
+			content, err := ioutil.ReadFile(fmt.Sprintf("%v/dataset/hn/unlabeled/%v", dir, file.Name()))
 			fmt.Println(string(content))
 			reader := bufio.NewReader(os.Stdin)
 			text, _ := reader.ReadString('\n')
@@ -63,17 +68,15 @@ func process() error {
 				return err
 			}
 
-			from := fmt.Sprintf("/home/jzollars/hack/data-sets/hn/unlabeled/%v", file.Name())
+			from := fmt.Sprintf("%v/dataset/hn/unlabeled/%v", dir, file.Name())
 			switch class {
 			case 0:
-				fmt.Println(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
-				err = os.Rename(from, fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
+				err = os.Rename(from, fmt.Sprintf("%v/dataset/hn/neg/%v", dir, file.Name()))
 				if err != nil {
 					return err
 				}
 			case 1:
-				fmt.Println(fmt.Sprintf("/home/jzollars/hack/data-sets/hn/neg/%v", file.Name()))
-				err = os.Rename(from, fmt.Sprintf("/home/jzollars/hack/data-sets/hn/pos/%v", file.Name()))
+				err = os.Rename(from, fmt.Sprintf("%v/dataset/hn/flag/%v", dir, file.Name()))
 				if err != nil {
 					return err
 				}
