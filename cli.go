@@ -21,7 +21,7 @@ func main() {
 				Aliases: []string{"t"},
 				Usage:   "Load top HN Posts",
 				Action: func(c *cli.Context) error {
-					err := LoadPosts("0", "0")
+					err := LoadTopPosts()
 					if err != nil {
 						return err
 					}
@@ -49,6 +49,27 @@ func main() {
 				},
 				Action: func(c *cli.Context) error {
 					err := LoadPosts(c.String("start"), c.String("end"))
+					if err != nil {
+						return err
+					}
+
+					return nil
+				},
+			},
+			{
+				Name:    "search",
+				Aliases: []string{"d"},
+				Usage:   "Search hn posts by search term",
+				Flags: []cli.Flag{
+					&cli.StringFlag{
+						Name:     "query",
+						Aliases:  []string{"q"},
+						Usage:    "Search term",
+						Required: true,
+					},
+				},
+				Action: func(c *cli.Context) error {
+					err := SearchPosts(c.String("query"))
 					if err != nil {
 						return err
 					}

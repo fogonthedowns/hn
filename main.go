@@ -31,14 +31,18 @@ type TopPosts struct {
 	} `json:"hits"`
 }
 
+func SearchPosts(search string) error {
+	url := fmt.Sprintf("https://hn.algolia.com/api/v1/search?query=%v&tags=story&hitsPerPage=100", search)
+	return Get(url)
+}
+
 func LoadPosts(unixStart, unixEnd string) error {
-	var url string
-	if unixStart != "0" && unixEnd != "0" {
-		url = fmt.Sprintf("https://hn.algolia.com/api/v1/search_by_date?tags=story&numericFilters=created_at_i>%v,created_at_i<%v", unixStart, unixEnd)
-		fmt.Println(url)
-	} else {
-		url = "https://hn.algolia.com/api/v1/search?tags=front_page"
-	}
+	url := fmt.Sprintf("https://hn.algolia.com/api/v1/search_by_date?tags=story&numericFilters=created_at_i>%v,created_at_i<%v", unixStart, unixEnd)
+	return Get(url)
+}
+
+func LoadTopPosts() error {
+	url := "https://hn.algolia.com/api/v1/search?tags=front_page"
 	return Get(url)
 }
 

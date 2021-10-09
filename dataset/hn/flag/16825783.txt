@@ -1,0 +1,1 @@
+Kafka, GDPR and Event Sourcing

@@ -1,1 +1,0 @@
-A nasty bit of undefined timezone behavior in Golang

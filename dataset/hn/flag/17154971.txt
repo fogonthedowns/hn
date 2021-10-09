@@ -1,0 +1,1 @@
+GDPR for lazy people: Block all European users with Cloudflare Workers

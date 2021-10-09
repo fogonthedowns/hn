@@ -1,0 +1,1 @@
+Ghostery exposed everyone's email address in its GDPR email by not using BCC
